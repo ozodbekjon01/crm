@@ -1,0 +1,29 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+    <div class="main-dashboard">
+        <div class="tab">
+            <h2> "{{ course[1] }}" Kursiga yozilgan o'quvchilar ro'yxati</h2>
+            <div>
+                <a href="/admin/courses"><button class="add">Orqaga</button></a>
+            </div>
+        </div>
+        <table>
+            <tr class="par">
+                <th>Ismi</th>
+                <th>Familiyasi</th>
+                <th>ochestvo</th>
+                <th>telefon</th>
+                <th>email</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[4] }}</td>
+                <td>{{ student[5] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <form class="add-stud" action="/admin/courses/add" method="post">
+                <h1>kurs qo'shish</h1>
+                <input type="text" name="name" placeholder="Kurs nomi" required>
+                <textarea type="text" name="description" placeholder="Kurs tavsifi" required></textarea>
+                <input type="number" name="price" placeholder="Kurs narxi" required>
+                <select name="teacher" id="" required>
+                    <option value="" disabled selected>--- Tanlang ---</option>
+                    {% for teacher in teachers %}
+                        <option value="{{ teacher[0] }}">{{ teacher[1] }} {{ teacher[2] }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Qo'shish</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

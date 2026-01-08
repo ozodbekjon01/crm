@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/admin.css') }}">
+    <title>CRM Admin Panel</title>
+</head>
+<body>
+    <div class="a1">
+
+
+        <div class="navbar">
+            <h1>Admin Panel</h1>
+            <div class="profile">
+                <p>{{ session['user_name'] }}</p>
+                <a href="/logout"><button>Chiqish</button></a>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; ">ushbu sayt test rejimida ishlamoqda</h2>
+
+        <div class="content">
+            <div class="len">
+                <ul>
+                    <li><a href="/admin/dashboard"><button>Dashboard</button></a></li>
+                    <li><a href="/admin/cources"><button>Kurslar</button></a></li>
+                    <li><a href="/admin/students"><button>O'quvchilar</button></a></li>
+                    <li><a href="/admin/teachers"><button>O'qituvchilar</button></a></li>
+                    <li><a href="/admin/payments"><button>To'lovlar</button></a></li>
+                </ul>
+            </div>
+            
+            {% block content %}{% endblock %}
+
+        </div>
+
+
+    </div>
+</body>
+</html>

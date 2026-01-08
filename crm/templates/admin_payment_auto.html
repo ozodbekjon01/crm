@@ -1,0 +1,47 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+
+<h2>Avtomatik to‘lov aniqlash</h2>
+
+<form method="post">
+    <select name="student_id" required>
+        <option value="">O‘quvchini tanlang</option>
+        {% for s in students %}
+            <option value="{{ s[0] }}">{{ s[1] }} {{ s[2] }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Hisoblash</button>
+</form>
+
+{% if result %}
+<hr>
+<h3>To‘lanishi kerak bo‘lgan oylar</h3>
+
+<form method="post" action="/admin/payments/confirm">
+<table>
+    <tr>
+        <th>Kurs</th>
+        <th>Oy</th>
+        <th>Yil</th>
+        <th>Tasdiqlash</th>
+    </tr>
+
+    {% for r in result %}
+    <tr>
+        <td>{{ r.course_name }}</td>
+        <td>{{ r.next_month }}</td>
+        <td>{{ r.next_year }}</td>
+        <td>
+            <input type="checkbox"
+                name="confirm[]"
+                value="{{ r.course_id }}|{{ r.next_month }}|{{ r.next_year }}|{{ r.student_id }}">
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<button type="submit">Tasdiqlash</button>
+</form>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+    <div class="main-dashboard">
+        <div class="tab">
+            <h2>O'quvchilar ro'yxati</h2>
+            <div>
+                <a href="/admin/students/add"><button class="add">qo'shish</button></a>
+                <a href="/admin/students/edit"><button class="add">tahrirlash</button></a>
+            </div>
+        </div>
+        <table>
+            <tr class="par">
+                <th>Ismi</th>
+                <th>Familiyasi</th>
+                <th>ochestvo</th>
+                <th>telefon</th>
+                <th>email</th>
+                <th>course</th>
+                <th> </th>
+
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[4] }}</td>
+                <td>{{ student[5] }}</td>
+                <td>
+                    {% for course in courses %}
+                        {% if (course[0])|string == (student[6])|string %}
+                            {{ course[1] }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="/admin/students/delete/{{ student[0] }}"><button class="add">O'chirish</button></a>
+                    <a href="/admin/students/view/{{student[0]}}"><button class="add">Tahrirlash</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>    
+
+{% endblock %}

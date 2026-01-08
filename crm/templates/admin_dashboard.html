@@ -1,0 +1,44 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+
+<div class="tables">
+
+
+
+{% for block in dashboard %}
+<div class="course-card">
+    <h2>{{ block.course }} — {{ block.price }} so‘m</h2>
+    <p style="color: black;">O‘qituvchi: {{ block.teacher }}</p>
+
+    <table class="payment-table">
+        <thead>
+            <tr>
+                <th>O‘quvchi</th>
+                {% for m in range(1,13) %}
+                    <th>{{ m }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in block.table %}
+            <tr>
+                <td>{{ row.student }}</td>
+                {% for cell in row.months %}
+                    <td class="{{ cell }}"></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endfor %}
+
+
+
+
+
+</div>
+
+{% endblock %}
+
+

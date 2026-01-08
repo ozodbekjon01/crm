@@ -1,0 +1,32 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+    <div class="main-dashboard">
+        <div class="tab">
+            <h2>Kurslar ro'yxati</h2>
+            <div>
+                <a href="/admin/courses/add"><button class="add">qo'shish</button></a>
+                <a href="/admin/courses/edit"><button class="add">tahrirlash</button></a>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>Nomi</th>
+                <th>Tavsif</th>
+                <th>Narxi</th>
+                <th>Amallar</th>
+            </tr>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course[1] }}</td>
+                <td>{{ course[2] }}</td>
+                <td>{{ course[3] }}</td>
+                <td><a href="/admin/courses/delete/{{ course[0] }}"><button class="add">O'chirish</button></a>
+
+                    <a href="/admin/courses/edit/{{ course[0] }}"><button class="add">Tahrirlash</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}

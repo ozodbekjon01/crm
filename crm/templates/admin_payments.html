@@ -1,0 +1,78 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+    <div class="main-dashboard">
+        <div class="tab">
+            <h2>To'lovlar jadvali</h2>
+            <div>
+                <a href="/admin/payments/auto"><button class="add">qo'shish</button></a>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>O‘quvchi</th>
+                <th>Kurs</th>
+                <th>Oy</th>
+                <th>Yil</th>
+            </tr>
+
+            <form method="get">
+            <tr>
+                <th></th>
+
+                <th>
+                    <input type="text" name="student" placeholder="O‘quvchi"
+                        value="{{ request.args.get('student', '') }}">
+                </th>
+
+                <th>
+                    <input type="text" name="course" placeholder="Kurs"
+                        value="{{ request.args.get('course', '') }}">
+                </th>
+
+                <th>
+                    <select name="month">
+                        <option value="">Oy</option>
+                        {% for m in months %}
+                            <option value="{{ m[0] }}"
+                                {% if m[0] == selected_month %}selected{% endif %}>
+                                {{ m[0] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </th>
+
+                <th>
+                    <select name="year">
+                        <option value="">Yil</option>
+                        {% for y in years %}
+                            <option value="{{ y[0] }}"
+                                {% if y[0] == selected_year %}selected{% endif %}>
+                                {{ y[0] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit">Qidirish</button>
+                </th>
+            </tr>
+            </form>
+
+
+
+
+
+            {% for p in payments %}
+            <tr>
+                <td>{{ p[0] }}</td>
+                <td>{{ p[1] }}</td>
+                <td>{{ p[2] }}</td>
+                <td>{{ p[3] }}</td>
+                <td>{{ p[4] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+        
+    </div>
+{% endblock %}

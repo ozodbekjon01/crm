@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="login-container">
+        <div class="login-box">
+            <form method="POST">
+                <h1>Teacher Edit</h1>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="{{ login_info[1] }}" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="text" id="password" name="password" value="{{ login_info[2] }}" required>
+                </div>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="{{ teacher[1] }}" required>
+                </div>
+                <div>
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" value="{{ teacher[2] }}" required>
+                </div>
+                <div>
+                    <label for="ochestvo">Otasining ismi:</label>
+                    <input type="text" id="ochestvo" name="ochestvo" value="{{ teacher[3] }}" required>
+                </div>
+                <div>
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" value="{{ teacher[4] }}" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ teacher[5] }}" required>
+                </div>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
